@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Getit : MonoBehaviour
+public class GameEnding : MonoBehaviour
 {
-	void OnCollisionEnter(Collision collision)
-	{
-		if (collision.collider.tag == "Food")
-		{
-			Destroy(collision.collider.gameObject);
-		}
-	}
+    public float fadeDuration = 1f;
+    public GameObject player;
+    bool m_IsPlayerAtExit;
+
+    void AotherOnTriggerEnter(Collider other)
+    {
+        if (other.gameObject == player)
+        {
+            m_IsPlayerAtExit = true;
+        }
+    }
 }
+
